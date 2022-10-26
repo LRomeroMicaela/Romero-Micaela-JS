@@ -24,7 +24,7 @@ const armazon5 = new Lentes(104, "./img/solMildura.jpg", "Lentes de Sol","Mildur
 const armazon6 = new Lentes(105, "./img/solMuzik.jpg", "Lentes de Sol", "Muzik", "Wayfarer", "Negro", 8500, 100);
 
 let lentesDisponibles = [armazon1, armazon2, armazon3, armazon4, armazon5, armazon6];
-
+const arrayProductos = [];
 function armadoCard(){
     for (let armazon of lentesDisponibles){
         let card = document.createElement("div")
@@ -34,8 +34,7 @@ function armadoCard(){
             <img src = ${armazon.img} class="card-img-top" alt = ${armazon.nombre}>
               <h5 class="card-title txt-login">${armazon.nombre}, ${armazon.marca}</h5>
               <p class="card-text txt-login">$${armazon.precio}</p>
-              <a id="btn-add" onclick ="armazon.restaStock()" href="#" class="btn btn-primary subm1">Agregar al carrito</a>
-            
+              <a id="btn-add" onclick ="armazon.restaStock()" href="#" class="btn btn-primary subm1">Agregar al carrito</a>  
         </div>`; //ver onclick
         document.getElementById("container-productos").append(card); 
         card.className ="card col-10 col-md-3 img-cat main-img";   
@@ -45,35 +44,40 @@ armadoCard();
 
 //variables
 const addButtons = document.querySelectorAll(`#btn-add`);
-let cardTitle = ""; 
-let cardPrecio ="";
-let cardImg ="";
 
 //funcion creo el evento del click del boton y llamo a la funcion traer la card seleccionada por el usuario
 addButtons.forEach(button =>{
     button.addEventListener(`click`,addToCartClicked);
 });
 // funcion que trae la card y extraigo los items de la card que me sirven. Llamo a otra funcion para armar el carrito
+
 function addToCartClicked(event){
     const boton = event.target;
     const traerCardEntera = boton.closest(`.card`);
 
-    cardTitle = traerCardEntera.querySelector(`.card-title`).textContent;
-    cardPrecio = traerCardEntera.querySelector(`.card-text`).textContent;
-    cardImg = traerCardEntera.querySelector(`.card-img-top`).src;
+    const cardTitle = traerCardEntera.querySelector(`.card-title`).textContent;
+    const cardPrecio = traerCardEntera.querySelector(`.card-text`).textContent;
+    const cardImg = traerCardEntera.querySelector(`.card-img-top`).src;
+
+    arrayProductos.push({cardTitle, cardPrecio, cardImg})
+    console.log(arrayProductos)
+
+    localStorage.setItem('lentes', JSON.stringify(arrayProductos))
+};
+
+/*
+function addToCartClicked(event){
+    const boton = event.target;
+    const traerCardEntera = boton.closest(`.card`);
+
+    const cardTitle = traerCardEntera.querySelector(`.card-title`).textContent;
+    const cardPrecio = traerCardEntera.querySelector(`.card-text`).textContent;
+    const cardImg = traerCardEntera.querySelector(`.card-img-top`).src;
 
     //addProdToCart(cardTitle, cardPrecio, cardImg); 
 };
-
-localStorage.setItem("productos", JSON.stringify(lentesDisponibles));
-localStorage.setItem("img", JSON.stringify(cardImg));
-localStorage.setItem("titulo", JSON.stringify (cardTitle));
-localStorage.setItem("precio", JSON.stringify(cardPrecio));
-
-console.log(cardPrecio);
-
 const setCarrito = objeto => {
-    /* console.log(objeto) */
+    //console.log(objeto)
     const producto = {
         id: objeto.querySelector('.btn-dark').dataset.id,
         title: objeto.querySelector('h5').textContent,
@@ -94,7 +98,7 @@ const setCarrito = objeto => {
 
 
 //no darle importancia  a esto, estaba probando algo 
-/*const seleccionadoDelCatalogo = document.querySelector(`#seleccionado-del-catalogo`);
+const seleccionadoDelCatalogo = document.querySelector(`#seleccionado-del-catalogo`);
 
 function addProdToCart(titulo, precio, img){
     let carritoShowAdd = document.createElement("tr")
