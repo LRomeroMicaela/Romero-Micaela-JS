@@ -1,9 +1,8 @@
 
 //saco del localStorage el item seleccionado por el usuario
 let almacenados = JSON.parse(localStorage.getItem("lentes"));
-//variable para borrar carrito, con close boton
-
-
+const carrito = [];
+console.log (carrito)
 extraerProdSeleccinado();
 
 //funcion para extraer los item del array almacenados
@@ -12,6 +11,7 @@ function extraerProdSeleccinado() {
 		let { cardImg, cardPrecio, cardTitle } = item;
 		console.log(item);
 		console.log(cardImg, cardPrecio, cardTitle);
+        carrito.push({cardTitle, cardPrecio, cardImg});
 		mostrarImgDeProdSeleccionado();
 	}
 }
@@ -35,17 +35,17 @@ function mostrarImgDeProdSeleccionado(){
 //y dar la opcion de la cantidad al usuario
 // validar input
 //crear un alert con los datos del comprador y lo elegido.
-
+/*
 function multiplicarPorLaCantDeseada(){
-  const canti = document.getElementById("cantidadAComprar")
+    const canti = document.getElementById("cantidadAComprar")
     canti.addEventListener(`input`, multiplicarPorElPrecio)
     console.log (canti)
   
 }
-
-
+*/
 //boton para borrar lo del carrito
 //funcion para vaciar carrito y localStorage
+//variable para borrar carrito, con close boton
 const clearCarrito = document.getElementById(`boton-close`);
     clearCarrito.addEventListener(`click`, clearHTML);
 function clearHTML(){
@@ -54,3 +54,22 @@ function clearHTML(){
     almacenados = "";    
 }
 
+function multiplicarPorLaCantDeseada(){
+    for (let armazon of carrito){
+    let { cardPrecio } = armazon;
+    console.log (cardPrecio)
+    const select = document.getElementById("cantidadAComprar");
+    select.addEventListener("change",()=>{
+        const valor = parseInt(select.options[select.selectedIndex].value);
+        if (valor === 1){
+            alert `El valor a abonar es de ` + JSON.stringify(cardPrecio);
+        } else if(valor === 2){
+            let priceTotal = cardPrecio * 2;
+            alert `El valor a abonar es de ${priceTotal}`;
+        } else if (valor === 3){
+            let priceTotal2 = cardPrecio * 3;
+            alert `El valor a abonar es de ${priceTotal2}`;
+        }
+    });
+    }
+}
