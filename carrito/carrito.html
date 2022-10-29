@@ -94,18 +94,12 @@
   </div>
 </section>
     <main class="container">
-        <div class="row">
-        <h2>Carrito</h2>
-        <div class="seleccionado">
-            <div class="seleccionado-img col-10"><img width="100%" src="../img/aviadorBless.jpg" alt="producto elegido"></div>
-            <div class="seleccionado-description col-10"><p>Descripción del producto seleccionado:</p></div>
-            <div class="seleccionado-material col-10"><p>Material:</p></div>
-        </div>
-        </div>
+        <div id="artElegido" class="row">
+        </div> 
       <section class= "buy">
         <p><b> Datos para la compra</b></p>
         <form action="post">
-        <select class="form-select cant" aria-label="Default select example">
+        <select id="cantidadAComprar" class="form-select cant" aria-label="Default select example">
           <option selected>Cantidad</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -191,6 +185,10 @@
             </div>
             <div class="thank">
               <input  class="cant env" type="submit">
+            </div>
+            <div>
+              <button id="boton-close" type="button" class="btn-close" aria-label="Close"></button>
+              <p>Eliminar producto del carrito.</p>
             </div>
             <div class="thank">
               <p><b> ¡Muchas Gracias por habernos elegido!</b></p>

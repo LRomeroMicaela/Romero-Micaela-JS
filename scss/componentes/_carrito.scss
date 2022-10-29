@@ -74,7 +74,7 @@
     grid-template-areas: 
     "imgs desc"
     "imgs mat";
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
 }
 .seleccionado-img{
@@ -95,7 +95,6 @@
     font-weight: 600;
 }
 .seleccionado-img img{
-    @extend %disposicion;
     margin: nth($size,4);
     border: solid;
     border-color:$border_button;
