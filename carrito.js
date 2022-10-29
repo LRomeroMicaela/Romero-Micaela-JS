@@ -1,8 +1,8 @@
-
 //saco del localStorage el item seleccionado por el usuario
 let almacenados = JSON.parse(localStorage.getItem("lentes"));
 const carrito = [];
-console.log (carrito)
+console.log (carrito);
+
 extraerProdSeleccinado();
 
 //funcion para extraer los item del array almacenados
@@ -31,14 +31,10 @@ function mostrarImgDeProdSeleccionado(){
    multiplicarPorLaCantDeseada();
 }
 
-//me falta restar a la cantidad seleccionada al stock 
-//y dar la opcion de la cantidad al usuario
-// validar input
-//crear un alert con los datos del comprador y lo elegido.
-
 // para borrar lo del carrito
 //funcion para vaciar carrito y localStorage
 //variable para borrar carrito, con close boton
+/*
 const clearCarrito = document.getElementById(`boton-close`);
     clearCarrito.addEventListener(`click`, clearHTML);
 function clearHTML(){
@@ -46,6 +42,8 @@ function clearHTML(){
     artElegido.innerHTML = "";
     almacenados = "";    
 }
+*/
+//funcion en proceso
 
 function multiplicarPorLaCantDeseada(){
     for (let armazon of carrito){
@@ -57,9 +55,9 @@ function multiplicarPorLaCantDeseada(){
     select.addEventListener("change",()=>{
         const valor = parseInt(select.options[select.selectedIndex].value);
         if (valor === 1){
-            alert (`El valor a abonar es de $ ` + precio);
+            alert (`El valor a abonar es de  ` + cardPrecio);
         } else if(valor === 2){
-            let priceTotal = cardPrecio * 2;
+            let priceTotal = precio * 2;
             alert (`El valor a abonar es de  `+ priceTotal);
         } else if (valor === 3){
             let priceTotal2 = parseInt(cardPrecio) * parseInt(3);
@@ -68,3 +66,10 @@ function multiplicarPorLaCantDeseada(){
     });
     }
 }
+
+
+//NOTAS PARA MI
+//me falta restar a la cantidad seleccionada al stock 
+//y dar la opcion de la cantidad al usuario
+// validar input
+//crear un alert con los datos del comprador y lo elegido.
