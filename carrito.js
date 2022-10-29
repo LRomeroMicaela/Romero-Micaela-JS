@@ -35,15 +35,8 @@ function mostrarImgDeProdSeleccionado(){
 //y dar la opcion de la cantidad al usuario
 // validar input
 //crear un alert con los datos del comprador y lo elegido.
-/*
-function multiplicarPorLaCantDeseada(){
-    const canti = document.getElementById("cantidadAComprar")
-    canti.addEventListener(`input`, multiplicarPorElPrecio)
-    console.log (canti)
-  
-}
-*/
-//boton para borrar lo del carrito
+
+// para borrar lo del carrito
 //funcion para vaciar carrito y localStorage
 //variable para borrar carrito, con close boton
 const clearCarrito = document.getElementById(`boton-close`);
@@ -57,18 +50,20 @@ function clearHTML(){
 function multiplicarPorLaCantDeseada(){
     for (let armazon of carrito){
     let { cardPrecio } = armazon;
-    console.log (cardPrecio)
+    console.log (cardPrecio);
+    let precio = parseInt(cardPrecio);
+    console.log(precio)
     const select = document.getElementById("cantidadAComprar");
     select.addEventListener("change",()=>{
         const valor = parseInt(select.options[select.selectedIndex].value);
         if (valor === 1){
-            alert `El valor a abonar es de ` + JSON.stringify(cardPrecio);
+            alert (`El valor a abonar es de $ ` + precio);
         } else if(valor === 2){
             let priceTotal = cardPrecio * 2;
-            alert `El valor a abonar es de ${priceTotal}`;
+            alert (`El valor a abonar es de  `+ priceTotal);
         } else if (valor === 3){
-            let priceTotal2 = cardPrecio * 3;
-            alert `El valor a abonar es de ${priceTotal2}`;
+            let priceTotal2 = parseInt(cardPrecio) * parseInt(3);
+            alert (`El valor a abonar es de ` + priceTotal2);
         }
     });
     }
