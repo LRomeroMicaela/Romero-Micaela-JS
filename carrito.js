@@ -30,7 +30,7 @@ function mostrarImgDeProdSeleccionado(){
     `
     document.getElementById("artElegido").append(divConImg);
     }
-   multiplicarPorLaCantDeseada();
+   //multiplicarPorLaCantDeseada();
 }
 
 // para borrar lo del carrito
