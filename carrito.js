@@ -25,12 +25,12 @@ function mostrarImgDeProdSeleccionado(){
         <div class="seleccionado">
             <div class="seleccionado-img col-10"><img width="100%" src=${item.cardImg} alt="producto elegido"></div>
             <div class="seleccionado-description col-10"><p>Descripción del producto seleccionado: ${item.cardTitle}</p></div>
-            <div class="seleccionado-material col-10"><p>Precio por unidad: ${item.cardPrecio}</p></div>
+            <div class="seleccionado-material col-10"><p>Precio por unidad: $ ${item.cardPrecio}</p></div>
         </div>
     `
     document.getElementById("artElegido").append(divConImg);
     }
-   //multiplicarPorLaCantDeseada();
+   multiplicarPorLaCantDeseada();
 }
 
 // para borrar lo del carrito
@@ -45,34 +45,29 @@ function clearHTML(){
     almacenados = "";    
 }
 
-
-//funcion en proceso
-
-// function multiplicarPorLaCantDeseada(){
-//     for (let armazon of carrito){
-//     let { cardPrecio } = armazon;
-//     console.log (cardPrecio);
-//     let precio = Number(cardPrecio);
-//     console.log(precio)
-//     const select = document.getElementById("cantidadAComprar");
-//     select.addEventListener("change",()=>{
-//         const valor = parseInt(select.options[select.selectedIndex].value);
-//         if (valor === 1){
-//             alert (`El valor a abonar es de  ` + precio);
-//         } else if(valor === 2){
-//             let priceTotal = Number(cardPrecio) * 2;
-//             alert (`El valor a abonar es de  `+ priceTotal);
-//         } else if (valor === 3){
-//             let priceTotal2 = parseInt(cardPrecio) * parseInt(3);
-//             alert (`El valor a abonar es de ` + priceTotal2);
-//         }
-//     });
-//     }
-// }
+function multiplicarPorLaCantDeseada(){
+    for (let armazon of carrito){
+    let { cardPrecio } = armazon;
+    console.log (cardPrecio);
+    const select = document.getElementById("cantidadAComprar");
+    select.addEventListener("change",()=>{
+        const valor = parseInt(select.options[select.selectedIndex].value);
+        if (valor === 1){
+            alert (`El valor a abonar es de $ ` + cardPrecio);
+        } else if(valor === 2){
+            let priceTotal = cardPrecio * 2;
+            alert (`El valor a abonar es de $ `+ priceTotal);
+        } else if (valor === 3){
+            let priceTotal2 = cardPrecio * parseInt(3);
+            alert (`El valor a abonar es de $ ` + priceTotal2);
+        }
+    });
+    }
+}
 
 
 //NOTAS PARA MI
 //me falta restar a la cantidad seleccionada al stock 
-//y dar la opcion de la cantidad al usuario
+//index.js el $ antes del precio
 // validar input
 //crear un alert con los datos del comprador y lo elegido.

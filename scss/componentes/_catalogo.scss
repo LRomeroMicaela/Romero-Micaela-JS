@@ -1,7 +1,10 @@
 //todo de las cards los primeros 3 id.
 .catalogo{
     @extend %disposicion;
-} 
+}
+.card-body{
+    @extend %disposicion;
+}
 .img-cat{
     padding:nth($size,1);
     margin:nth($size,1);
