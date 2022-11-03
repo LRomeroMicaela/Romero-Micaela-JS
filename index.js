@@ -36,7 +36,10 @@ function armadoCard(){
             <div class="card-body">
             <img src = ${armazon.img} class="card-img-top" alt = ${armazon.nombre}>
               <h5 class="card-title txt-login">${armazon.nombre}, ${armazon.marca}</h5>
-              <h5 class="card-text txt-login">${armazon.precio}</h5>
+              <div class="txt-login">
+              <h6 class="card-text">$</h6>
+              <h6 class="card-text card-price">${armazon.precio}</h6>
+              </div>
               <a id="btn-add" href="#" class="btn btn-primary subm1">Agregar al carrito</a>
         </div>`; 
         document.getElementById("container-productos").append(card); 
@@ -60,7 +63,7 @@ function addToCartClicked(event){
     const traerCardEntera = boton.closest(`.card`);
 
     const cardTitle = traerCardEntera.querySelector(`.card-title`).textContent;
-    const cardPrecio = traerCardEntera.querySelector(`.card-text`).textContent;
+    const cardPrecio = traerCardEntera.querySelector(`.card-price`).textContent;
     const cardImg = traerCardEntera.querySelector(`.card-img-top`).src;
 
     arrayProductos.push({cardTitle, cardPrecio, cardImg})
